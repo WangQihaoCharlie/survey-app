@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="survey-question-recorder" />
+        <module name="survey-common" />
+        <module name="survey-basic" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SurveyApp" options="-parameters" />
+      <module name="survey-basic" options="-parameters" />
+      <module name="survey-common" options="-parameters" />
+      <module name="survey-question-recorder" options="-parameters" />
+    </option>
+  </component>
+</project>
