@@ -11,17 +11,35 @@
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+        <property name="com.intellij.clouds.kubernetes.db.resource.type" value="Deployment" />
         <property name="com.intellij.clouds.kubernetes.db.container.port" />
       </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="mongodb@192.168.1.70" uuid="a94190e3-0efa-480f-8ca4-88b5ddf23f11">
-      <driver-ref>mongo</driver-ref>
+    <data-source source="LOCAL" name="redis@localhost" uuid="a86c82de-a2e5-47ed-bda8-59c40acee542">
+      <driver-ref>redis</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
-      <remarks>$PROJECT_DIR$/survey-question-recorder/src/main/resources/application.properties</remarks>
-      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
-      <jdbc-url>mongodb://192.168.1.70:27017</jdbc-url>
+      <jdbc-driver>jdbc.RedisDriver</jdbc-driver>
+      <jdbc-url>jdbc:redis://localhost:6379/0</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.host.port" />
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+        <property name="com.intellij.clouds.kubernetes.db.container.port" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="survey-auth@localhost" uuid="c1f3c4a1-ce9c-45be-90df-c1be7f1c3a72">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/survey-auth?useUnicode=true&amp;characterEncoding=UTF-8&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.host.port" />
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+        <property name="com.intellij.clouds.kubernetes.db.container.port" />
+      </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

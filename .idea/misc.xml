@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/survey-id/pom.xml" />
         <option value="$PROJECT_DIR$/survey-basic/pom.xml" />
+        <option value="$PROJECT_DIR$/survey-auth/pom.xml" />
       </list>
     </option>
   </component>

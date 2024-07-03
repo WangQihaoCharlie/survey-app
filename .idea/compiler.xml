@@ -8,14 +8,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="survey-question-recorder" />
-        <module name="survey-common" />
         <module name="survey-basic" />
+        <module name="survey-auth" />
+        <module name="survey-common" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="SurveyApp" options="-parameters" />
+      <module name="SurveyApp" options="" />
+      <module name="survey-auth" options="-parameters" />
       <module name="survey-basic" options="-parameters" />
       <module name="survey-common" options="-parameters" />
       <module name="survey-question-recorder" options="-parameters" />
