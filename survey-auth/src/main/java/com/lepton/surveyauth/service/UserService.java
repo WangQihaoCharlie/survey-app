@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
 
-    String login(String username, String password);
+    String login(String username, String password, String ip);
 
-    void logout();
+    void logout(String username, String token);
 
-    String register(User user);
+    void register(User user);
 
     User findUserByUsername(String username);
 }

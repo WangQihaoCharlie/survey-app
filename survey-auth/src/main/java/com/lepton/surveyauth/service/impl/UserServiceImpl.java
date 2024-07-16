@@ -8,6 +8,10 @@ import com.lepton.surveyauth.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -15,32 +19,41 @@ public class UserServiceImpl implements UserService {
 
     private final JwtUtils jwtUtils;
 
-    public UserServiceImpl(UserDao userDao, JwtUtils jwtUtils) {
+    private final RedisTokenService redisTokenService;
+
+    @Autowired
+    public UserServiceImpl(UserDao userDao, JwtUtils jwtUtils, RedisTokenService redisTokenService) {
         this.userDao = userDao;
         this.jwtUtils = jwtUtils;
+        this.redisTokenService = redisTokenService;
     }
 
+
     @Override
-    public String login(String username, String password) {
+    public String login(String username, String password, String ip) {
         User user = userDao.getByUsername(username);
         if(user == null) {
             return "Invalid username or password";
         }
         else if(user.getPassword().equals(password)) {
-            return jwtUtils.generateToken(username);
+            String token = jwtUtils.generateToken(username);
+            String current = LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL));
+            redisTokenService.addUserTokenToHash(String.valueOf(user.getId()), username, current, ip);
+
+            return token;
         }
         return "Invalid username or password";
     }
 
     @Override
-    public void logout() {
-
+    public void logout(String username, String token) {
+        User user = userDao.getByUsername(username);
+        redisTokenService.addToSet("usertoken:" + user.getId(), token);
     }
 
     @Override
-    public String register(User user) {
+    public void register(User user) {
         userDao.insert(user);
-        return "";
     }
 
     @Override
@@ -48,3 +61,4 @@ public class UserServiceImpl implements UserService {
         return userDao.getByUsername(username);
     }
 }
+

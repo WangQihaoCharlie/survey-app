@@ -2,7 +2,6 @@ package com.lepton.surveyauth.service.impl;
 
 import com.lepton.surveyauth.dao.UserDao;
 import com.lepton.surveyauth.entity.dto.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
