@@ -1,1 +1,1 @@
-http://193.122.171.17:8080/hello/sign-in.jsp
+http://193.122.171.17:8080/sign-in.jsp
